@@ -3,8 +3,8 @@ using UnityEngine;
 public class Jugador : MonoBehaviour
 {
 
-    public float thrustforce = 5f;
-    public float rotationspeed = 10f;
+    public float thrustforce = 100f;
+    public float rotationspeed = 120f;
     private Rigidbody _rigid;
 
 
@@ -17,6 +17,12 @@ public class Jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float rotation = Input.GetAxis("Horizontal") * Time.deltaTime;
+        float thrust_ = Input.GetAxis("Thrust") * Time.deltaTime;
+        Vector3 thrustDirection = transform.right;
+
+        _rigid.AddForce(thrustDirection * thrust_* thrustforce);
+        transform.Rotate(Vector3.forward, -rotation * rotationspeed);
+
     }
 }
