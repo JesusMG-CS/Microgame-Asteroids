@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Jugador : MonoBehaviour
 {
 
@@ -32,5 +32,20 @@ public class Jugador : MonoBehaviour
             balaScript.targetVector = transform.right;
         }
 
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if(collision.gameObject.tag == "Enemy")
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        else
+        {
+            Debug.Log("He colisionado con otra cosa...");
+        }
+        
     }
 }
