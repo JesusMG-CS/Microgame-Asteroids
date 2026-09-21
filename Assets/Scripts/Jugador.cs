@@ -5,6 +5,7 @@ public class Jugador : MonoBehaviour
 
     public float thrustforce = 100f;
     public float rotationspeed = 120f;
+    public GameObject gun, bulletPrefab;
     private Rigidbody _rigid;
 
 
@@ -23,6 +24,13 @@ public class Jugador : MonoBehaviour
 
         _rigid.AddForce(thrustDirection * thrust_* thrustforce);
         transform.Rotate(Vector3.forward, -rotation * rotationspeed);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject bullet = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
+            Bullet balaScript = bullet.GetComponent<Bullet>();
+            balaScript.targetVector = transform.right;
+        }
 
     }
 }
