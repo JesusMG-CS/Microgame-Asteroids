@@ -6,6 +6,7 @@ public class Jugador : MonoBehaviour
     public float thrustforce = 100f;
     public float rotationspeed = 120f;
     public GameObject gun, bulletPrefab;
+    public static int SCORE = 0;
     private Rigidbody _rigid;
 
 
@@ -40,6 +41,7 @@ public class Jugador : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy")
         {
+            SCORE = 0;
             SceneManager.LoadScene("SampleScene");
         }
         else
